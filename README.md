@@ -113,4 +113,7 @@ def Avg_Dice_matrix(y_true, y_predicted,num_classes=31):
 
     return avg_dice
 ```
+## Sample Segmentation
+
+![SAMPLE SEGMENATATION](https://github.com/fitushar/DenseVNet3D_Chest_Abdomen_Pelvis_Segmentation_tf2/blob/master/Figures/Segmentation.PNG)
 
