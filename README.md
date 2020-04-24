@@ -20,8 +20,8 @@ Reference Implementation:
 * b)https://niftynet.readthedocs.io/en/dev/_modules/niftynet/network/dense_vnet.html#DenseVNet
 
 ## Files:
-*   i) DenseVnet_config.py -|--> All the Netword and Training configuration
-*  ii) DenseVnet_Loss       |--> Losses and Matrics function. Binary And Multi-class Dice Coefficent and Dice Loss
-* iii) DenseVnet3D          |--> Network architecture
-*  iv) Train_DenseVnet3D    |--> Training Script. it has tfrecord decoder, tfdataset reading pipeline and training loop.
+*   i) `DenseVnet_config.py -|--> All the Netword and Training configuration`
+*  ii) `DenseVnet_Loss       |--> Losses and Matrics function. Binary And Multi-class Dice Coefficent and Dice Loss`
+* iii) `DenseVnet3D          |--> Network architecture`
+*  iv) `Train_DenseVnet3D    |--> Training Script. it has tfrecord decoder, tfdataset reading pipeline and training loop.`
 
