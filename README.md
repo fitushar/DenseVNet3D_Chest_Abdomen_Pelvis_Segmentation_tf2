@@ -7,7 +7,7 @@ This is a implemnation of the DenseVnet in tensorflow 2.0. DesnVnet(Gibson et al
 Reference Implementation:     
 * a)https://github.com/baibaidj/vision4med/blob/5c23f57c2836bfabd7bd95a024a0a0b776b181b5/nets/DenseVnet.py
 * b)https://niftynet.readthedocs.io/en/dev/_modules/niftynet/network/dense_vnet.html#DenseVNet
-
+```
     Input
       |
       --[ DFS ]-----------------------[ Conv ]------------[ Conv ]------[+]-->
@@ -16,3 +16,4 @@ Reference Implementation:
                    |                                  |              |
                    -----[ DFS ]-------[ Conv ]---------              |
                                                           [ Prior ]---
+```
