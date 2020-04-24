@@ -74,3 +74,43 @@ VALIDATION_TF_RECORDS='/Val/tfrecords/path/'
 
 ```
 
+## Dice Loss
+Loss function and matrix are very import. as tensorflow doesn't have a build in multi-class segmentation dice in this project I gave implemened Average Dice-Loss and Dice Matrix. in `DenseVnet_Loss.py` contains the loss and matrix functions. 
+
+```ruby
+
+#|Dice Coefficient for binary Segmentation task
+def dice_calculator(mask_true, mask_pred):
+
+    num_sum = 2.0 * tf.keras.backend.sum(mask_true * mask_pred) + tf.keras.backend.epsilon()
+    den_sum = tf.keras.backend.sum(tf.keras.backend.square(mask_true)) + tf.keras.backend.sum(tf.keras.backend.square(mask_pred))+ tf.keras.backend.epsilon()
+    dise=(num_sum/den_sum)
+
+    return dise
+#|Average Dice Loss for multiclass-Segmenatiom task
+def Avg_Dice_loss(y_true, y_predicted,num_classes=31):
+
+    clas_dice_list=[]
+    for i in range(0,num_classes):
+        mask_true = tf.keras.backend.flatten(y_true[:, :, :, :, i])#
+        mask_pred = tf.keras.backend.flatten(y_predicted[:, :, :, :, i])#
+        class_dice=dice_calculator(mask_true,mask_pred)
+        clas_dice_list.append(class_dice)
+    avg_dice=tf.math.reduce_mean(clas_dice_list,axis=0)
+    dice_loss=1-avg_dice
+    return dice_loss
+
+#|Average Dice matricx for multiclass-Segmenatiom task
+def Avg_Dice_matrix(y_true, y_predicted,num_classes=31):
+    clas_dice_list=[]
+    for i in range(0,num_classes):
+        mask_true = tf.keras.backend.flatten(y_true[:, :, :, :, i])#
+        mask_pred = tf.keras.backend.flatten(y_predicted[:, :, :, :, i])#
+        class_dice=dice_calculator(mask_true,mask_pred)
+        clas_dice_list.append(class_dice)
+    avg_dice=tf.math.reduce_mean(clas_dice_list,axis=0)
+    dice_score=tf.print(clas_dice_list[2:9],summarize=10)
+
+    return avg_dice
+```
+
